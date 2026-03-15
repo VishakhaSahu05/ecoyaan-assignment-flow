@@ -6,12 +6,10 @@ A multi-step checkout flow built with **Next.js 14 (App Router)**, **TypeScript*
 
 Deploy on Vercel (set the env variable below first):
 
-```bash
+bash
 npm i -g vercel
 vercel
-```
 
----
 
 ## Running Locally
 
@@ -24,15 +22,15 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000)
 
-> No extra setup needed — the mock API is built in.
+No extra setup needed — the mock API is built in.
 
 ---
 
 ## Environment Variables
 
 | Variable | Required | Description |
-|---|---|---|
-| `NEXT_PUBLIC_BASE_URL` | Production only | Your deployed URL e.g. `https://your-app.vercel.app` |
+
+ `NEXT_PUBLIC_BASE_URL` | Production only | Your deployed URL e.g. `https://your-app.vercel.app` |
 
 In development this defaults to `http://localhost:3000`. Set it in the Vercel dashboard for production.
 
@@ -96,8 +94,8 @@ On clicking "Pay Securely", a 2-second `setTimeout` simulates a payment API call
 
 ## Tech Stack
 
-| What | Choice |
-|---|---|
+ What | Choice |
+
 | Framework | Next.js 14, App Router |
 | Language | TypeScript |
 | Styling | Tailwind CSS |

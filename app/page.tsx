@@ -5,7 +5,10 @@ import StepIndicator from "./components/StepIndicator";
 
 async function getCartData(): Promise<CartData> {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/cart`, {
+    const baseUrl =
+      process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+
+    const res = await fetch(`${baseUrl}/api/cart`, {
       cache: "no-store",
     });
 
@@ -13,11 +16,10 @@ async function getCartData(): Promise<CartData> {
       throw new Error("Failed to fetch cart data");
     }
 
-    return res.json();
+    return await res.json();
   } catch (error) {
     console.error("Cart fetch error:", error);
 
-    // fallback so app doesn't crash
     return {
       cartItems: [],
       shipping_fee: 0,
@@ -30,7 +32,7 @@ export default async function HomePage() {
   const cartData = await getCartData();
 
   return (
-    <div>
+    <div className="min-h-screen bg-gray-50">
       <Header />
 
       <div className="max-w-5xl mx-auto px-4 pb-12">
