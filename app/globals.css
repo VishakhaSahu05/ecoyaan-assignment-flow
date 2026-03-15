@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background-color: #f3f4f6;
+  color: #111827;
+}
+
+input, select, button {
+  font-family: 'Nunito', sans-serif;
+}
+
+input:focus, select:focus {
+  outline: none;
+}
