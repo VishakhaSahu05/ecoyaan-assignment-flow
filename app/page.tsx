@@ -5,10 +5,7 @@ import StepIndicator from "./components/StepIndicator";
 
 async function getCartData(): Promise<CartData> {
   try {
-    const baseUrl =
-      process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
-
-    const res = await fetch(`${baseUrl}/api/cart`, {
+    const res = await fetch("/api/cart", {
       cache: "no-store",
     });
 

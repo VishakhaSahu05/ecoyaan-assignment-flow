@@ -1,7 +1,4 @@
 import { NextResponse } from "next/server";
-
-// Using the exact mock data from the assignment
-// image URLs from the brief used via.placeholder.com, replacing with placehold.co which is more reliable
 const mockCartData = {
   cartItems: [
     {
