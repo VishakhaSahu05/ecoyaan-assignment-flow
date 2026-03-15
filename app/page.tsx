@@ -4,11 +4,26 @@ import Header from "./components/Header";
 import StepIndicator from "./components/StepIndicator";
 
 async function getCartData(): Promise<CartData> {
-  // Need absolute URL for SSR — relative URLs don't work in server components
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
-  const res = await fetch(`${baseUrl}/api/cart`, { cache: "no-store" });
-  if (!res.ok) throw new Error("Failed to fetch cart data");
-  return res.json();
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/cart`, {
+      cache: "no-store",
+    });
+
+    if (!res.ok) {
+      throw new Error("Failed to fetch cart data");
+    }
+
+    return res.json();
+  } catch (error) {
+    console.error("Cart fetch error:", error);
+
+    // fallback so app doesn't crash
+    return {
+      cartItems: [],
+      shipping_fee: 0,
+      discount_applied: 0,
+    };
+  }
 }
 
 export default async function HomePage() {
@@ -17,8 +32,10 @@ export default async function HomePage() {
   return (
     <div>
       <Header />
+
       <div className="max-w-5xl mx-auto px-4 pb-12">
         <StepIndicator current={1} />
+
         <CartClient initialCartData={cartData} />
       </div>
     </div>
